@@ -1261,7 +1261,7 @@ void GpioInit(void)
 
   if (!ValidModule(Settings.module)) {
     uint32_t module = MODULE;
-    if (!ValidModule(MODULE)) { module = SONOFF_BASIC; }
+    if (!ValidModule(MODULE)) { module = DELOCK_11826; }
     Settings.module = module;
     Settings.last_module = module;
   }
@@ -1544,7 +1544,7 @@ void setup(void)
         Settings.my_adc0 = ADC0_NONE;               // Reset user defined ADC0 disabling sensors
       }
       if (RtcReboot.fast_reboot_count > Settings.param[P_BOOT_LOOP_OFFSET] +4) {  // Restarted 6 times
-        Settings.module = SONOFF_BASIC;             // Reset module to Sonoff Basic
+        Settings.module = DELOCK_11826;             // Reset module to Sonoff Basic
   //      Settings.last_module = SONOFF_BASIC;
       }
       AddLog_P2(LOG_LEVEL_DEBUG, PSTR(D_LOG_APPLICATION D_LOG_SOME_SETTINGS_RESET " (%d)"), RtcReboot.fast_reboot_count);

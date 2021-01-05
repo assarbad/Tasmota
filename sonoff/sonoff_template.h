@@ -327,7 +327,7 @@ const char kAdc0Names[] PROGMEM =
 
 // Supported hardware modules
 enum SupportedModules {
-  SONOFF_BASIC,
+  DELOCK_11826,
   SONOFF_RF,
   SONOFF_SV,
   SONOFF_TH,
@@ -379,7 +379,7 @@ enum SupportedModules {
   ESP_SWITCH,
   OBI,
   TECKIN,
-  APLIC_WDP303075,
+  DELOCK_11827,
   TUYA_DIMMER,
   GOSUND,
   ARMTRONIX_DIMMERS,
@@ -387,7 +387,7 @@ enum SupportedModules {
   PS_16_DZ,
   TECKIN_US,
   MANZOKU_EU_4,
-  OBI2,
+  DELOCK_11826V1,
   YTF_IR_BRIDGE,
   DIGOO,
   KA10,
@@ -750,7 +750,7 @@ const uint8_t kGpioNiceList[] PROGMEM = {
 };
 
 const uint8_t kModuleNiceList[] PROGMEM = {
-  SONOFF_BASIC,        // Sonoff Relay Devices
+  DELOCK_11826,        // Sonoff Relay Devices
   SONOFF_RF,
   SONOFF_TH,
   SONOFF_DUAL,
@@ -798,7 +798,7 @@ const uint8_t kModuleNiceList[] PROGMEM = {
   BLITZWOLF_BWSHP,     // Socket Relay Devices with Energy Monitoring
   TECKIN,
   TECKIN_US,
-  APLIC_WDP303075,
+  DELOCK_11827,
   GOSUND,
   ZX2820,
   SK03_TUYA,
@@ -808,7 +808,7 @@ const uint8_t kModuleNiceList[] PROGMEM = {
   WAGA,
   NEO_COOLCAM,         // Socket Relay Devices
   OBI,
-  OBI2,
+  DELOCK_11826V1,
   MANZOKU_EU_4,
   ESP_SWITCH,          // Switch Devices
 #ifdef USE_TUYA_MCU
@@ -844,12 +844,12 @@ const uint8_t kModuleNiceList[] PROGMEM = {
 
 // Default module settings
 const mytmplt kModules[MAXMODULE] PROGMEM = {
-  { "Sonoff Basic",    // SONOFF_BASIC - Sonoff Basic (ESP8266)
+  { "Delock 11826",    // SONOFF_BASIC - Sonoff Basic (ESP8266)
      GPIO_KEY1,        // GPIO00 Button
-     GPIO_USER,        // GPIO01 Serial RXD and Optional sensor
-     GPIO_USER,        // GPIO02 Only available on newer Sonoff Basic R2 V1
-     GPIO_USER,        // GPIO03 Serial TXD and Optional sensor
-     GPIO_USER,        // GPIO04 Optional sensor
+     0,        // GPIO01 Serial RXD and Optional sensor
+     0,        // GPIO02 Only available on newer Sonoff Basic R2 V1
+     0,        // GPIO03 Serial TXD and Optional sensor
+     0,        // GPIO04 Optional sensor
      0,                // GPIO05
                        // GPIO06 (SD_CLK   Flash)
                        // GPIO07 (SD_DATA0 Flash QIO/DIO/DOUT)
@@ -858,8 +858,8 @@ const mytmplt kModules[MAXMODULE] PROGMEM = {
      0,                // GPIO10 (SD_DATA3 Flash QIO or ESP8285)
                        // GPIO11 (SD_CMD   Flash)
      GPIO_REL1,        // GPIO12 Red Led and Relay (0 = Off, 1 = On)
-     GPIO_LED1_INV,    // GPIO13 Green Led (0 = On, 1 = Off) - Link and Power status
-     GPIO_USER,        // GPIO14 Optional sensor
+     GPIO_LED1,    // GPIO13 Green Led (0 = On, 1 = Off) - Link and Power status
+     0,        // GPIO14 Optional sensor
      0,                // GPIO15
      0,                // GPIO16
      0                 // ADC0 Analog input
@@ -1780,8 +1780,8 @@ const mytmplt kModules[MAXMODULE] PROGMEM = {
      GPIO_REL1,        // GPIO14 Relay (0 = Off, 1 = On)
      0, 0, 0
   },
-  { "AplicWDP303075",  // APLIC_WDP303075 - Aplic WDP 303075 (ESP8285 - HLW8012 Energy Monitoring)
-                       // https://www.amazon.de/dp/B07CNWVNJ2
+  { "Delock 11827",  // (ESP8285 - HLW8012 Energy Monitoring)
+                       // 
      0, 0, 0,
      GPIO_KEY1,        // GPIO03 Button
      GPIO_HLW_CF,      // GPIO04 HLW8012 CF power
@@ -1793,7 +1793,7 @@ const mytmplt kModules[MAXMODULE] PROGMEM = {
      0,                // GPIO10 (SD_DATA3 Flash QIO or ESP8285)
                        // GPIO11 (SD_CMD   Flash)
      GPIO_NRG_SEL_INV, // GPIO12 HLW8012 CF Sel output (0 = Voltage)
-     GPIO_LED1_INV,    // GPIO13 LED (0 = On, 1 = Off) - Link and Power status
+     GPIO_LED1,    // GPIO13 LED (0 = On, 1 = Off) - Link and Power status
      GPIO_REL1,        // GPIO14 Relay SRU 5VDC SDA (0 = Off, 1 = On )
      0, 0, 0
   },
@@ -1938,23 +1938,27 @@ const mytmplt kModules[MAXMODULE] PROGMEM = {
      GPIO_USER,        // GPIO16
      0
   },
-  { "OBI Socket 2",    // OBI2 - OBI socket (ESP8266) - https://www.obi.de/hausfunksteuerung/wifi-stecker-schuko-2-stueck-weiss/p/4077673
-     0,                // GPIO00
-     0,                // GPIO01 Serial RXD
-     0,
-     0,                // GPIO03 Serial TXD
-     GPIO_REL1,        // GPIO04 Relay 1
-     GPIO_KEY1,        // GPIO05 Button
+  { "Delock 11826v1",    // Delock 11826 (ESP8285) = Sonoff Basic
+     GPIO_KEY1,        // GPIO00 Button
+     0,                // GPIO01 Serial RXD and Optional sensor
+
+     0,                // GPIO02 Only available on newer Sonoff Basic R2 V1
+
+     0,                // GPIO03 Serial TXD and Optional sensor
+
+     0,                // GPIO04 Optional sensor
+
+     0,                // GPIO05
                        // GPIO06 (SD_CLK   Flash)
                        // GPIO07 (SD_DATA0 Flash QIO/DIO/DOUT)
                        // GPIO08 (SD_DATA1 Flash QIO/DIO/DOUT)
      0,                // GPIO09 (SD_DATA2 Flash QIO or ESP8285)
      0,                // GPIO10 (SD_DATA3 Flash QIO or ESP8285)
                        // GPIO11 (SD_CMD   Flash)
-     GPIO_LEDLNK_INV,  // GPIO12 Green LED - Link status
-     GPIO_LED1,        // GPIO13 Red LED - Power status
+     GPIO_REL1,        // GPIO12 Red Led and Relay (0 = Off, 1 = On)
+     GPIO_LED1,        // GPIO13 Green Led (0 = On, 1 = Off)
      0, 0, 0, 0
-  },
+ },
   { "YTF IR Bridge",   // YTF_IR_BRIDGE - https://www.aliexpress.com/item/Tuya-universal-Smart-IR-Hub-remote-control-Voice-Control-AC-TV-Work-With-Alexa-Google-Home/32951202513.html
      GPIO_USER,        // GPIO00
      GPIO_USER,        // GPIO01 Serial RXD

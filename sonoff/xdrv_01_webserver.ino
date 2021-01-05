@@ -426,11 +426,6 @@ const char HTTP_FORM_OTHER[] PROGMEM =
   "<fieldset><legend><b>&nbsp;" D_OTHER_PARAMETERS "&nbsp;</b></legend>"
   "<form method='get' action='co'>"
   "<p></p>"
-  "<fieldset><legend><b>&nbsp;" D_TEMPLATE "&nbsp;</b></legend>"
-  "<p><input id='t1' placeholder='" D_TEMPLATE "' value='%s'></p>"
-  "<p><input id='t2' type='checkbox'%s><b>" D_ACTIVATE "</b></p>"
-  "</fieldset>"
-  "<br>"
   "<b>" D_WEB_ADMIN_PASSWORD "</b><input type='checkbox' onclick='sp(\"wp\")'><br><input id='wp' type='password' placeholder='" D_WEB_ADMIN_PASSWORD "' value='" D_ASTERISK_PWD "'><br>"
   "<br>"
   "<input id='b1' type='checkbox'%s><b>" D_MQTT_ENABLE "</b><br>"
@@ -1189,7 +1184,7 @@ void HandleConfiguration(void)
   WSContentStart_P(S_CONFIGURATION);
   WSContentSendStyle();
 
-  WSContentButton(BUTTON_MODULE);
+
   WSContentButton(BUTTON_WIFI);
 
   XdrvCall(FUNC_WEB_ADD_BUTTON);
@@ -1197,7 +1192,7 @@ void HandleConfiguration(void)
 
   WSContentButton(BUTTON_LOGGING);
   WSContentButton(BUTTON_OTHER);
-  WSContentButton(BUTTON_TEMPLATE);
+
 
   WSContentSpaceButton(BUTTON_RESET_CONFIGURATION);
   WSContentButton(BUTTON_BACKUP);
@@ -1683,7 +1678,7 @@ void HandleOtherConfiguration(void)
   TemplateJson();
   char stemp[strlen(mqtt_data) +1];
   strlcpy(stemp, mqtt_data, sizeof(stemp));  // Get JSON template
-  WSContentSend_P(HTTP_FORM_OTHER, stemp, (USER_MODULE == Settings.module) ? " checked disabled" : "", (Settings.flag.mqtt_enabled) ? " checked" : "");
+  WSContentSend_P(HTTP_FORM_OTHER, (Settings.flag.mqtt_enabled) ? " checked" : "");
 
   uint32_t maxfn = (devices_present > MAX_FRIENDLYNAMES) ? MAX_FRIENDLYNAMES : (!devices_present) ? 1 : devices_present;
 #ifdef USE_SONOFF_IFAN

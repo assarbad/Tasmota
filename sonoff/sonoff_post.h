@@ -401,17 +401,17 @@ char* ToHex_P(const unsigned char * in, size_t insz, char * out, size_t outsz, c
 #define APP_SLEEP 1                              // Default to sleep = 1 for FIRMWARE_BASIC
 
 #undef USE_ARDUINO_OTA                           // Disable support for Arduino OTA
-#undef USE_DOMOTICZ                              // Disable Domoticz
-#undef USE_HOME_ASSISTANT                        // Disable Home Assistant
+//#undef USE_DOMOTICZ                              // Disable Domoticz
+//#undef USE_HOME_ASSISTANT                        // Disable Home Assistant
 #undef USE_MQTT_TLS                              // Disable TLS support won't work as the MQTTHost is not set
 #undef USE_KNX                                   // Disable KNX IP Protocol Support
 //#undef USE_WEBSERVER                             // Disable Webserver
 #undef USE_WEBSEND_RESPONSE                      // Disable command WebSend response message (+1k code)
 //#undef USE_EMULATION                             // Disable Wemo or Hue emulation
-//#undef USE_EMULATION_HUE                         // Disable Hue Bridge emulation for Alexa (+14k code, +2k mem common)
+#undef USE_EMULATION_HUE                         // Disable Hue Bridge emulation for Alexa (+14k code, +2k mem common)
 //#undef USE_EMULATION_WEMO                        // Disable Belkin WeMo emulation for Alexa (+6k code, +2k mem common)
 #undef USE_CUSTOM                                // Disable Custom features
-#undef USE_DISCOVERY                             // Disable Discovery services for both MQTT and web server
+//#undef USE_DISCOVERY                             // Disable Discovery services for both MQTT and web server
 //#undef USE_TIMERS                                // Disable support for up to 16 timers
 //#undef USE_TIMERS_WEB                            // Disable support for timer webpage
 //#undef USE_SUNRISE                               // Disable support for Sunrise and sunset tools
@@ -423,7 +423,7 @@ char* ToHex_P(const unsigned char * in, size_t insz, char * out, size_t outsz, c
 #undef USE_SONOFF_RF                             // Disable support for Sonoff Rf Bridge (+3k2 code)
   #undef USE_RF_FLASH                            // Disable support for flashing the EFM8BB1 chip on the Sonoff RF Bridge. C2CK must be connected to GPIO4, C2D to GPIO5 on the PCB
 #undef USE_SONOFF_SC                             // Disable support for Sonoff Sc (+1k1 code)
-//#undef USE_TUYA_MCU                              // Disable support for Tuya Serial MCU
+#undef USE_TUYA_MCU                              // Disable support for Tuya Serial MCU
 #undef USE_ARMTRONIX_DIMMERS                     // Disable support for Armtronix Dimmers (+1k4 code)
 #undef USE_PS_16_DZ                              // Disable support for PS-16-DZ Dimmer and Sonoff L1 (+2k code)
 #undef USE_SONOFF_IFAN                           // Disable support for Sonoff iFan02 and iFan03 (+2k code)
@@ -434,7 +434,7 @@ char* ToHex_P(const unsigned char * in, size_t insz, char * out, size_t outsz, c
 #undef USE_EXS_DIMMER                            // Disable support for EX-Store WiFi Dimmer
 
 // -- Optional light modules ----------------------
-//#undef USE_LIGHT                                 // Also disable all Dimmer/Light support
+#undef USE_LIGHT                                 // Also disable all Dimmer/Light support
 #undef USE_WS2812                                // Disable WS2812 Led string using library NeoPixelBus (+5k code, +1k mem, 232 iram) - Disable by //
 #undef USE_MY92X1                                // Disable support for MY92X1 RGBCW led controller as used in Sonoff B1, Ailight and Lohas
 #undef USE_SM16716                               // Disable support for SM16716 RGB LED controller (+0k7 code)
@@ -462,7 +462,7 @@ char* ToHex_P(const unsigned char * in, size_t insz, char * out, size_t outsz, c
 #undef USE_PZEM004T                              // Disable PZEM004T energy sensor
 #undef USE_PZEM_AC                               // Disable PZEM014,016 Energy monitor
 #undef USE_PZEM_DC                               // Disable PZEM003,017 Energy monitor
-//#undef USE_MCP39F501                             // Disable MCP39F501 Energy monitor as used in Shelly 2
+#undef USE_MCP39F501                             // Disable MCP39F501 Energy monitor as used in Shelly 2
 #undef USE_SDM120                                // Disable support for Eastron SDM120-Modbus energy meter
 #undef USE_SDM630                                // Disable support for Eastron SDM630-Modbus energy monitor (+0k6 code)
 #undef USE_DDS2382                               // Disable support for Hiking DDS2382 Modbus energy monitor (+0k6 code)
